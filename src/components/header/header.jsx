@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { colors } from '../../theme';
+import styled from 'styled-components';
 
 import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED } from '../../constants';
-
+import Store from '../../stores';
+import { colors } from '../../theme';
 import UnlockModal from '../unlock/unlockModal.jsx';
 
-import Store from '../../stores';
 const emitter = Store.emitter;
 const store = Store.store;
 
@@ -154,7 +153,7 @@ class Header extends Component {
           <div className={classes.icon}>
             <img
               alt=""
-              src={require('../../assets/beefy.svg')}
+              src={require('../../assets/logo_balle_header_160px.png')}
               height={'40px'}
               onClick={() => {
                 this.nav('');
@@ -216,7 +215,7 @@ class Header extends Component {
     `;
 
     return (
-      <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
+      <Link href={`https://${name}.ballena.io`} target="_blank" rel="noopener noreferrer">
         <Icon className={`fas fa-${icon}`} />
         <span>{label}</span>
       </Link>
