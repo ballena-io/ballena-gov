@@ -1,6 +1,10 @@
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
+const DARK_BLUE= "#1D3149";
+
 export const colors = {
+  DARK_BLUE,
+  ACCENT_BLUE:  "#49BEFA",
   white: '#fff',
   black: '#000',
   darkBlue: '#2c3b57',
@@ -17,7 +21,7 @@ export const colors = {
   tomato: '#e56b73',
   purple: '#935dff',
 
-  text: '#212529',
+  text: DARK_BLUE,
   lightBlue: '#2F80ED',
   topaz: '#0b8f92',
   darkGray: 'rgba(43,57,84,.5)',
@@ -35,24 +39,33 @@ const breakpoints = createBreakpoints({
   },
 });
 
+export const custom = {
+  accentBlueBorder: `1px solid ${colors.ACCENT_BLUE}`
+}
+
 const iswapTheme = {
   typography: {
-    fontFamily: ['"proxima-nova"', 'sans-serif'].join(','),
+    fontFamily: ['"dosis"', 'sans-serif'].join(','),
+    color: DARK_BLUE,
     h1: {
-      fontSize: '48px',
+      color: DARK_BLUE,
+      fontSize: '52px',
       fontWeight: '600',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
       lineHeight: 1.2,
+      padding: '12px 0'
     },
     h2: {
-      fontSize: '36px',
+      color: DARK_BLUE,
+      fontSize: '42px',
       fontWeight: '600',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
       lineHeight: 1.2,
     },
     h3: {
+      color: DARK_BLUE,
       fontSize: '24px',
       fontWeight: '600',
       WebkitFontSmoothing: 'antialiased',
@@ -60,6 +73,7 @@ const iswapTheme = {
       lineHeight: 1.2,
     },
     h4: {
+      color: DARK_BLUE,
       fontSize: '16px',
       fontWeight: '600',
       WebkitFontSmoothing: 'antialiased',
@@ -67,6 +81,7 @@ const iswapTheme = {
       lineHeight: 1.2,
     },
     h5: {
+      color: DARK_BLUE,
       fontSize: '14px',
       fontWeight: '600',
       WebkitFontSmoothing: 'antialiased',
@@ -74,12 +89,14 @@ const iswapTheme = {
       lineHeight: 1.2,
     },
     body1: {
+      color: DARK_BLUE,
       fontSize: '16px',
       fontWeight: '300',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
     },
     body2: {
+      color: DARK_BLUE,
       fontSize: '16px',
       fontWeight: '300',
       WebkitFontSmoothing: 'antialiased',
@@ -172,7 +189,7 @@ const iswapTheme = {
     },
     MuiExpansionPanel: {
       root: {
-        border: '1px solid ' + colors.borderBlue,
+        border: custom.accentBlueBorder,
         borderRadius: '50px',
         margin: '8px 0px',
         '&:before': {
@@ -243,7 +260,7 @@ const iswapTheme = {
     },
     MuiToggleButtonGroup: {
       root: {
-        border: '1px solid ' + colors.borderBlue,
+        border: custom.accentBlueBorder,
         borderRadius: '50px',
       },
       groupedSizeSmall: {
@@ -258,10 +275,10 @@ const iswapTheme = {
   },
   palette: {
     primary: {
-      main: colors.black,
+      main: colors.DARK_BLUE,
     },
     secondary: {
-      main: colors.topaz,
+      main: colors.ACCENT_BLUE,
     },
     text: {
       primary: colors.text,
