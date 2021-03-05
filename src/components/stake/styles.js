@@ -79,16 +79,6 @@ const styles = (theme) => ({
     justifyContent: 'center',
     margin: '20px',
   },
-  actionButton: {
-    color: '#fff',
-    borderColor: '#000',
-    background: '#000',
-    fontWeight: '900',
-    padding: '.1rem 2rem',
-    '&:hover': {
-      background: '#5A8F69',
-    },
-  },
   buttonText: {
     fontWeight: '700',
   },
