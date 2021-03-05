@@ -1,98 +1,27 @@
+import { Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography, Button } from '@material-ui/core';
 
-import UnlockModal from '../unlock/unlockModal.jsx';
-
-import { ERROR, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONFIGURE_RETURNED } from '../../constants';
-
+import { CONFIGURE_RETURNED, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, ERROR } from '../../constants';
 import Store from '../../stores';
+import BalleButton from '../BalleButton/BalleButton';
+import UnlockModal from '../unlock/unlockModal.jsx';
+import styles from './styles';
+
 const emitter = Store.emitter;
 const store = Store.store;
-
-const styles = theme => ({
-  root: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    minWidth: '100vw',
-    padding: '36px 24px',
-  },
-  connectHeading: {
-    maxWidth: '300px',
-    textAlign: 'center',
-    color: '#000',
-  },
-  connectContainer: {
-    padding: '20px',
-  },
-  actionButton: {
-    color: '#fff',
-    borderColor: '#000',
-    background: '#000',
-    '&:hover': {
-      background: '#5A8F69',
-    },
-  },
-  notConnectedRoot: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  connectedRoot: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    width: '100%',
-  },
-  address: {
-    color: '#FF0',
-    width: '100%',
-    paddingBottom: '24px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  balances: {
-    color: '#0ff',
-    width: '100%',
-    padding: '12px',
-  },
-  balanceContainer: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  accountHeading: {
-    paddingBottom: '6px',
-  },
-  icon: {
-    cursor: 'pointer',
-  },
-  disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#F8F2EC',
-    marginBottom: '2rem',
-    fontWeight: 900,
-    color: '#000',
-  },
-});
 
 class Account extends Component {
   constructor(props) {
     super();
 
-    const account = store.getStore('account');
+    const account = store.getStore("account");
 
     this.state = {
       loading: false,
       account: account,
-      assets: store.getStore('assets'),
+      assets: store.getStore("assets"),
       modalOpen: false,
     };
   }
@@ -119,10 +48,10 @@ class Account extends Component {
   };
 
   connectionDisconnected = () => {
-    this.setState({ account: store.getStore('account'), loading: false });
+    this.setState({ account: store.getStore("account"), loading: false });
   };
 
-  errorReturned = error => {
+  errorReturned = (error) => {
     //TODO: handle errors
   };
 
@@ -144,16 +73,21 @@ class Account extends Component {
 
     return (
       <div className={classes.notConnectedRoot}>
-        <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Use with caution and DYOR.
-        </Typography>
+        <img className={classes.image} src={require("../../assets/logo_balle_pet.png")} alt={"Balle pet"} />
+
         <div className={classes.connectHeading}>
-          <Typography variant="h3">Connect your wallet to continue</Typography>
+          <Typography variant="h1">gov.ballena.io</Typography>
+        </div>
+        {/* <Typography variant={'h4'} className={classes.disclaimer}>
+          This project is in Beta. Use with caution and DYOR.
+        </Typography> */}
+        <div className={classes.connectHeading}>
+          <Typography className={classes.connectHeading}>Connect your Wallet to Continue</Typography>
         </div>
         <div className={classes.connectContainer}>
-          <Button className={classes.actionButton} onClick={this.unlockClicked} disabled={loading}>
+          <BalleButton onClick={this.unlockClicked} disabled={loading}>
             Connect
-          </Button>
+          </BalleButton>
         </div>
       </div>
     );

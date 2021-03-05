@@ -1,6 +1,6 @@
-# Beefy Finance ($BIFI)
+# ballena.io ($BALLE)
 
-Yield farming optimizer for Binance Smart Chain
+Decentralized Finance for Everybody
 
 ## Addresses
 
@@ -32,7 +32,6 @@ Pool 5: LP BSCSWAP (BNB-BUSD) — 8.000 $BIFI
 Pool 6: LP BSCSWAP (BNB-SPARTA) — 8.000 $BIFI
 [0x2b8c4ad8053b7933cfde936f16abc55bb5f694c6](https://bscscan.com/address/0x2b8c4ad8053b7933cfde936f16abc55bb5f694c6)
 
-
 ### Team Timelock Contracts
 
 To handle the team time-locks we are using the audited and battle tested OpenZeppelin TokenTimelock contract. All the contracts have their source code verified.
@@ -49,7 +48,6 @@ Timelock 3 - Unlocks 2021-07-06 16:00:00 (1625587200)
 Timelock 4 - Unlocks 2022-07-06 16:00:00 (1657123200)
 [0x48091c485eb842c86805251a5d68993bf49c90a1](https://bscscan.com/address/0x48091c485eb842c86805251a5d68993bf49c90a1)
 
-
 ### Proofs of Burn
 
 Here are the transactions where we revoke the minter account that we used to distribute to the pools, and where we burn the governance address that could create more minters
@@ -58,17 +56,16 @@ Revoke minter: [0x672a2c33769750ab69cafc47d9d5e1f8d0decd6da2f32fc6f412fa39aa0c19
 
 Burn governance: [0x5e883d6da804fc8fe29bd74406774f3f1bc7e86d8750d140c52da3fa3f83f3f0](https://bscscan.com/tx/0x5e883d6da804fc8fe29bd74406774f3f1bc7e86d8750d140c52da3fa3f83f3f0)
 
-
-## Community 🐄
+## Community
 
 If you have any questions, reach us out on any of our channels. Our community is awesome and there’s always someone to help out. Even if you don’t have doubts, come say hi!
 
-Twitter: https://twitter.com/beefyfinance
+Twitter: https://twitter.com/ballenaio
 
-Discord: https://discord.gg/UGyepS9
+Discord: https://discord.gg/fWwyskse2Z
 
-Website: https://beefy.finance/
+Website: https://ballena.io
 
-Medium: https://medium.com/beefyfinance/
+Medium: https://medium.com/@ballena
 
-Telegram: https://t.me/beefyfinance
+Telegram: https://t.me/stgcrypto
