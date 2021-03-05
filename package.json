@@ -1,6 +1,6 @@
 {
   "homepage": "./",
-  "name": "beefy-gov",
+  "name": "ballena-gov",
   "version": "1.1.1",
   "private": true,
   "dependencies": {
