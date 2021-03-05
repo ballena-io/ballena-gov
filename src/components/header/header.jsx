@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED } from '../../constants';
 import Store from '../../stores';
 import { colors } from '../../theme';
+import BalleButton from '../BalleButton/BalleButton';
 import UnlockModal from '../unlock/unlockModal.jsx';
 import styles from './styles';
 
@@ -85,16 +86,12 @@ class Header extends Component {
           <div className={classes.account}>
             {/* FIXME: check this */}
             {address && (
-              <Typography variant={'h4'} className={classes.walletAddress} noWrap onClick={this.addressClicked}>
+              <BalleButton onClick={this.addressClicked}>
                 {address}
                 <div className={classes.connectedDot}></div>
-              </Typography>
+              </BalleButton>
             )}
-            {!address && (
-              <Typography variant={'h4'} className={classes.walletAddress} noWrap onClick={this.addressClicked}>
-                Connect your wallet
-              </Typography>
-            )}
+            {!address && <BalleButton onClick={this.addressClicked}>Connect your wallet</BalleButton>}
           </div>
         </div>
         {modalOpen && this.renderModal()}

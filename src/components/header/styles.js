@@ -85,35 +85,17 @@ const styles = (theme) => ({
       flex: '0',
     },
   },
-  walletAddress: {
-    padding: '1rem',
-    borderRadius: '.5rem',
-    backgroundColor: '#F8F2EC',
-    display: 'flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&:hover': {
-      background: '#fff',
-      color: '#000',
-    },
-    '&:active': {
-      background: '#000',
-      color: '#fff',
-    },
-    [theme.breakpoints.down('sm')]: {
-      display: 'flex',
-      position: 'absolute',
-      top: '5rem',
-    },
-  },
   connectedDot: {
-    background: colors.compoundGreen,
+    background: colors.DARK_BLUE,
     opacity: '1',
     borderRadius: '10px',
     width: '10px',
     height: '10px',
     marginRight: '3px',
     marginLeft: '6px',
+    '&:hover': {
+      background: colors.ACCENT_BLUE,
+    },
   },
   name: {
     fontSize: '32px',
