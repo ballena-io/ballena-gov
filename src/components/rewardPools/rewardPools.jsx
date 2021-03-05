@@ -113,7 +113,7 @@ class RewardPools extends Component {
             }
           }}
         >
-          Open
+          OPEN
         </BalleButton>
       </div>
     );

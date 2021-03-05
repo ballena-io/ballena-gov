@@ -99,6 +99,7 @@ const styles = (theme) => ({
   contractLabel: {
     color: colors.DARK_BLUE,
     paddingBottom: '20px',
+    fontWeight: '600',
   },
   contractAddress: {
     color: colors.ACCENT_BLUE,
