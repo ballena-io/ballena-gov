@@ -52,10 +52,10 @@ const styles = (theme) => ({
     padding: '12px',
     border: '1px solid #F8F2EC',
     borderRadius: '0',
-    background: '#F8F2EC',
+    background: '#F72322;',
     marginBottom: '2rem',
     fontWeight: 900,
-    color: '#000',
+    color: '#fff',
   },
   rewardPools: {
     width: '100%',

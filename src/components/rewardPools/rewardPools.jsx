@@ -54,8 +54,8 @@ class RewardPools extends Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Use with caution and DYOR.
+        <Typography variant={'h3'} className={classes.disclaimer}>
+          WARNING: This project is in construction mode. Don't use the platform if you see this.
         </Typography>
         <div className={classes.rewardPools}>{this.renderRewards()}</div>
         {modalOpen && this.renderModal()}
