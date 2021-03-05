@@ -1,178 +1,25 @@
+import { InputAdornment, TextField, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography, Button, TextField, InputAdornment } from '@material-ui/core';
 
+import {
+  ERROR,
+  EXIT,
+  EXIT_RETURNED,
+  GET_BALANCES_RETURNED,
+  GET_REWARDS,
+  GET_REWARDS_RETURNED,
+  STAKE,
+  STAKE_RETURNED,
+  WITHDRAW,
+  WITHDRAW_RETURNED,
+} from '../../constants';
+import Store from '../../stores';
+import BalleButton from '../BalleButton/BalleButton';
 import Loader from '../loader';
 import Snackbar from '../snackbar';
-
-import Store from '../../stores';
-import { colors } from '../../theme';
-
-import { ERROR, STAKE, STAKE_RETURNED, WITHDRAW, WITHDRAW_RETURNED, GET_REWARDS, GET_REWARDS_RETURNED, EXIT, EXIT_RETURNED, GET_BALANCES_RETURNED } from '../../constants';
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '600px',
-    width: '100%',
-    alignItems: 'center',
-    margin: '0 auto 2rem',
-  },
-  intro: {
-    width: '100%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  introCenter: {
-    minWidth: '100%',
-    textAlign: 'center',
-    padding: '48px 0px',
-  },
-  investedContainer: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '12px',
-    minWidth: '100%',
-  },
-  connectContainer: {
-    padding: '12px',
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-    maxWidth: '450px',
-    [theme.breakpoints.up('md')]: {
-      width: '450',
-    },
-  },
-  overview: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    padding: '28px 30px',
-    borderRadius: '8px',
-    border: '1px solid #DED9D5',
-    marginTop: '40px',
-    width: '100%',
-    background: '#FBF6F0',
-  },
-  overviewField: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '0 5px',
-  },
-  overviewTitle: {
-    color: colors.darkGray,
-  },
-  overviewValue: {},
-  actions: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    background: '#FBF6F0',
-    border: '1px solid #DED9D5',
-    padding: '28px 30px',
-    borderRadius: '8px',
-    marginTop: '40px',
-  },
-  actionContainer: {
-    minWidth: 'calc(50% - 40px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '20px',
-  },
-  actionButton: {
-    color: '#fff',
-    borderColor: '#000',
-    background: '#000',
-    fontWeight: '900',
-    padding: '.1rem 2rem',
-    '&:hover': {
-      background: '#5A8F69',
-    },
-  },
-  primaryButton: {
-    color: '#fff',
-    borderColor: '#000',
-    background: '#000',
-    fontWeight: '900',
-    padding: '.1rem 2rem',
-    minHeight: '4rem',
-    minWidth: '14rem',
-    borderRadius: '.5rem',
-    '&:hover': {
-      background: '#5A8F69',
-    },
-  },
-  buttonText: {
-    fontWeight: '700',
-  },
-  valContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-  },
-  actionInput: {
-    padding: '0px 0px 12px 0px',
-
-    '& input': {
-      fontSize: '1.2rem',
-      borderBottom: '1px solid #DED9D5',
-    },
-  },
-  inputAdornment: {
-    fontWeight: '600',
-    fontSize: '1.5rem',
-  },
-  assetIcon: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    borderRadius: '25px',
-    background: '#dedede',
-    height: '30px',
-    width: '30px',
-    textAlign: 'center',
-    marginRight: '16px',
-  },
-  balances: {
-    width: '100%',
-    textAlign: 'right',
-    paddingRight: '20px',
-    cursor: 'pointer',
-  },
-  stakeButtons: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-around',
-    align: 'center',
-    marginTop: '2rem',
-  },
-  requirement: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  check: {
-    paddingTop: '6px',
-  },
-  voteLockMessage: {
-    margin: '20px',
-  },
-  title: {
-    color: '#000',
-    marginBottom: '2rem',
-    width: '100%',
-    textAlign: 'center',
-  },
-});
+import styles from './styles';
 
 const emitter = Store.emitter;
 const dispatcher = Store.dispatcher;
@@ -237,7 +84,7 @@ class Stake extends Component {
   balancesReturned = () => {
     const currentPool = store.getStore('currentPool');
     const pools = store.getStore('rewardPools');
-    let newPool = pools.filter(pool => {
+    let newPool = pools.filter((pool) => {
       return pool.id === currentPool.id;
     });
 
@@ -247,7 +94,7 @@ class Stake extends Component {
     }
   };
 
-  showHash = txHash => {
+  showHash = (txHash) => {
     this.setState({
       snackbarMessage: null,
       snackbarType: null,
@@ -260,7 +107,7 @@ class Stake extends Component {
     });
   };
 
-  errorReturned = error => {
+  errorReturned = (error) => {
     const snackbarObj = { snackbarMessage: null, snackbarType: null };
     this.setState(snackbarObj);
     this.setState({ loading: false });
@@ -285,15 +132,14 @@ class Stake extends Component {
     return (
       <div className={classes.root}>
         <div className={classes.intro}>
-          <Button
-            className={classes.actionButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.props.history.push('/staking');
             }}
           >
             Back
-          </Button>
+          </BalleButton>
         </div>
 
         <div className={classes.overview}>
@@ -374,54 +220,50 @@ class Stake extends Component {
     return (
       <div className={classes.actions}>
         <div className={classes.actionContainer}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={!pool.depositsEnabled || loading}
             onClick={() => {
               this.navigateInternal('stake');
             }}
           >
             Stake Tokens
-          </Button>
+          </BalleButton>
         </div>
         <div className={classes.actionContainer}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.onClaim();
             }}
           >
             Claim Rewards
-          </Button>
+          </BalleButton>
         </div>
         <div className={classes.actionContainer}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.navigateInternal('unstake');
             }}
           >
             Unstake Tokens
-          </Button>
+          </BalleButton>
         </div>
         <div className={classes.actionContainer}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.onExit();
             }}
           >
             Claim and Unstake
-          </Button>
+          </BalleButton>
         </div>
       </div>
     );
   };
 
-  navigateInternal = val => {
+  navigateInternal = (val) => {
     this.setState({ value: val });
   };
 
@@ -438,24 +280,22 @@ class Stake extends Component {
         </Typography>
         {this.renderAssetInput(asset, 'stake')}
         <div className={classes.stakeButtons}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.navigateInternal('options');
             }}
           >
             Back
-          </Button>
-          <Button
-            className={classes.primaryButton}
+          </BalleButton>
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.onStake();
             }}
           >
             Stake
-          </Button>
+          </BalleButton>
         </div>
       </div>
     );
@@ -474,24 +314,22 @@ class Stake extends Component {
         </Typography>
         {this.renderAssetInput(asset, 'unstake')}
         <div className={classes.stakeButtons}>
-          <Button
-            className={classes.primaryButton}
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.navigateInternal('options');
             }}
           >
             <Typography variant={'h4'}>Back</Typography>
-          </Button>
-          <Button
-            className={classes.primaryButton}
+          </BalleButton>
+          <BalleButton
             disabled={loading}
             onClick={() => {
               this.onUnstake();
             }}
           >
             Unstake
-          </Button>
+          </BalleButton>
         </div>
       </div>
     );
@@ -582,7 +420,9 @@ class Stake extends Component {
               className={classes.value}
               noWrap
             >
-              {'Balance: ' + (asset && asset.balance ? (Math.floor(asset.balance * 10000) / 10000).toFixed(4) : '0.0000')} {asset ? asset.symbol : ''}
+              {'Balance: ' +
+                (asset && asset.balance ? (Math.floor(asset.balance * 10000) / 10000).toFixed(4) : '0.0000')}{' '}
+              {asset ? asset.symbol : ''}
             </Typography>
           )}
           {type === 'unstake' && (
@@ -594,7 +434,11 @@ class Stake extends Component {
               className={classes.value}
               noWrap
             >
-              {'Balance: ' + (asset && asset.stakedBalance ? (Math.floor(asset.stakedBalance * 10000) / 10000).toFixed(4) : '0.0000')} {asset ? asset.symbol : ''}
+              {'Balance: ' +
+                (asset && asset.stakedBalance
+                  ? (Math.floor(asset.stakedBalance * 10000) / 10000).toFixed(4)
+                  : '0.0000')}{' '}
+              {asset ? asset.symbol : ''}
             </Typography>
           )}
         </div>
@@ -635,7 +479,7 @@ class Stake extends Component {
     return <Snackbar type={snackbarType} message={snackbarMessage} open={true} />;
   };
 
-  onChange = event => {
+  onChange = (event) => {
     let val = [];
     val[event.target.id] = event.target.value;
     this.setState(val);

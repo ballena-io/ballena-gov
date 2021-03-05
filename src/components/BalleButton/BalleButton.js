@@ -6,7 +6,7 @@ import styles from './styles';
 
 const useStyles = makeStyles(styles);
 
-const BalleButton = ({ children, onClick, isOutlined }) => {
+const BalleButton = ({ children, onClick, isOutlined, ...rest }) => {
   const classes = useStyles();
 
   const styles = [classes.balleButton, isOutlined ? classes.balleButtonOutlined : classes.balleButtonContained];
