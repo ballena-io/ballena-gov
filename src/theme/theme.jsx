@@ -1,10 +1,13 @@
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
-const DARK_BLUE= "#1D3149";
+const ACCENT_BLUE = '#49BEFA';
+const DARK_BLUE = '#1D3149';
+const LIGHT_BLUE = '#EAF8FF';
 
 export const colors = {
+  ACCENT_BLUE,
   DARK_BLUE,
-  ACCENT_BLUE:  "#49BEFA",
+  LIGHT_BLUE,
   white: '#fff',
   black: '#000',
   darkBlue: '#2c3b57',
@@ -40,8 +43,8 @@ const breakpoints = createBreakpoints({
 });
 
 export const custom = {
-  accentBlueBorder: `1px solid ${colors.ACCENT_BLUE}`
-}
+  accentBlueBorder: `1px solid ${colors.ACCENT_BLUE}`,
+};
 
 const iswapTheme = {
   typography: {
@@ -54,7 +57,7 @@ const iswapTheme = {
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
       lineHeight: 1.2,
-      padding: '12px 0'
+      padding: '12px 0',
     },
     h2: {
       color: DARK_BLUE,
