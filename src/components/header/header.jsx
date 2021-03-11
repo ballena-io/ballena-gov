@@ -61,7 +61,7 @@ class Header extends Component {
           <div className={classes.icon}>
             <img
               alt=''
-              src={require('../../assets/logo_balle_header_160px.png')}
+              src={require('../../assets/balle-logo.png')}
               height={'70px'}
               onClick={() => {
                 this.nav('');
